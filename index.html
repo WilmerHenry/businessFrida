@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="theme-color" content="#626d52" />
+    <script>
+      // Aplicar el tema antes de pintar la página evita un destello claro al recargar.
+      (() => {
+        let saved
+        try { saved = localStorage.getItem('frida-theme') } catch {}
+        const theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#1b201a' : '#626d52'
+      })()
+    </script>
+    <meta name="description" content="Descubre ropa, perfumes, maquillaje y productos de ganoderma en Frida. Explora el catálogo y selecciona tus favoritos." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HooBank</title>
+    <title>Frida · Estilo & Bienestar</title>
   </head>
   <body>
     <div id="root"></div>
